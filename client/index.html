@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+  <script type="text/javascript" src="upload.js"></script>
+  <script type="text/javascript">
+  initup = function() {
+    up = new HTML5Upload
+    up.init('html5upload')
+  }
+
+  window.addEventListener("load", initup)
+  </script>
+</head>
+<body>
+  <div id="html5upload">
+    <div>
+      <form action="">
+        <input type="file" name="files" multiple="multiple" />
+        <input type="button" name="upload_button" value="Upload" />
+      </form>
+    </div>
+    <div>
+      <div class="upload_status" />
+      <div class="current_file_status" />
+    </div>
+  </div>
+</body>
+</html>
