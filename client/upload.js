@@ -5,6 +5,7 @@ function HTML5Upload() {
   var dom
   var form
   var filesInput
+  var uploadButton
 
   //Initialization methods
   this.init = function(blockId) {
@@ -24,7 +25,7 @@ function HTML5Upload() {
   this.updateQueue = function() {
     fileList = filesInput.files
 
-    for (f in fileList)
+    for (var f in fileList)
     {
       fileList[f].upload_status = 'pending'
       fileList[f].upload_result = null
@@ -43,31 +44,20 @@ function HTML5Upload() {
     var uploaded = 0
     var text = ''
 
-    for (f in fileList)
-    {
-      if (fileList[f].upload_status == 'finished')
-        uploaded++
-    }
+    for (var f in fileList)
+      if (fileList[f].upload_status == 'finished') uploaded++;
 
-    var statusBlock = dom.getElementsByClassName('upload_status')[0]
+    var statusBlock = dom.getElementsByClassName('upload_status')[0];
     
-    if (fileList.length == 0)
-    {
-      text = 'Please select some files for upload'
-    }
-    else if (uploaded == 0)
-    {
-      text = fileList.length + ' files are ready for upload'
-    }
+    if (fileList.length === 0)
+      text = 'Please select some files for upload';
+    else if (uploaded === 0)
+      text = fileList.length + ' files are ready for upload';
     else if (uploaded < fileList.length)
-    {
-      text = 'Upload in progress; ' + uploaded + '/' + fileList.length + ' uploaded'
-    }
+      text = 'Upload in progress; ' + uploaded + '/' + fileList.length + ' uploaded';
     else
-    {
-      text = 'Upload finished. ' + uploaded + ' files uploaded'
-    }
+      text = 'Upload finished. ' + uploaded + ' files uploaded';
 
-    statusBlock.innerHTML = text
+    statusBlock.innerHTML = text;
   }
 }
